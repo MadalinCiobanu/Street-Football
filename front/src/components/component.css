@@ -30,3 +30,16 @@
   font-size: 30px;
   font-family: cursive, "Lucida Sans";
 }
+
+.footer {
+  background-color: #eeeeee;
+  max-height: 50px;
+}
+
+.footer > div > a {
+  margin: 0 10px 0 10px;
+}
+
+.footer > p {
+  margin: 15px 0 10px 0;
+}
