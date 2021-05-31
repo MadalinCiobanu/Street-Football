@@ -1,0 +1,32 @@
+.navbar {
+  background-color: #222831;
+}
+
+.navbar-brand {
+  margin-left: 5%;
+}
+
+.navbar-item {
+  color: #eeeeee;
+  font-size: 18px;
+  margin-left: 5%;
+}
+
+.navbar-item:hover,
+.navbar-item:focus {
+  background-color: #222831 !important;
+  color: #00adb5 !important;
+}
+
+.navbar-end {
+  margin-right: 5%;
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  margin-left: 10%;
+  color: #00adb5;
+  font-size: 30px;
+  font-family: cursive, "Lucida Sans";
+}
