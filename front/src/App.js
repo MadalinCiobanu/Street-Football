@@ -4,6 +4,8 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home';
 import Register from './components/register/RegisterForm';
+import Login from './components/Login'
+
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
         <Header />
         <Route exact path="/" component={Home}/>
         <Route path="/register" component={Register}/>
+        <Route path="/login" component={Login} />
         <Footer />
       </Router>
     </div>
