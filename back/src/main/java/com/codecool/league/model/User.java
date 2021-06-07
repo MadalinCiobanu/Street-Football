@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter @Setter
@@ -30,13 +32,14 @@ public class User {
     @NotNull @Email
     private String email;
 
-    @NotNull @Size(min = 3, max = 20)
+    @NotNull @Size(min = 5)
     private String password;
-
-    private boolean admin;
 
     @ManyToOne
     @JsonIgnoreProperties(value = {"players"})
     private Team team;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    private List<String> roles = new ArrayList<>();
 
 }
