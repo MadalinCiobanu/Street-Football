@@ -3,6 +3,7 @@ package com.codecool.league.controller;
 import com.codecool.league.model.AuthResponse;
 import com.codecool.league.model.UserCredentials;
 import com.codecool.league.security.JwtServices;
+import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -17,15 +18,11 @@ import java.util.stream.Collectors;
 @RestController
 @CrossOrigin("*")
 @RequestMapping("/auth")
+@AllArgsConstructor
 public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtServices jwtServices;
-
-    public AuthController(AuthenticationManager authenticationManager, JwtServices jwtServices) {
-        this.authenticationManager = authenticationManager;
-        this.jwtServices = jwtServices;
-    }
 
     @PostMapping("/login")
     public AuthResponse login (@RequestBody UserCredentials userCredentials) {

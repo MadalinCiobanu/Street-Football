@@ -17,7 +17,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 @Component
-@Slf4j
 public class JwtServices {
 
     @Value("${security.jwt.token.secret-key:asgweheh54u5j4jw42sg2yhdshwyq43y}")
@@ -64,7 +63,8 @@ public class JwtServices {
             Jws<Claims> claims = Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token);
             return !claims.getBody().getExpiration().before(new Date());
         } catch (JwtException | IllegalArgumentException e) {
-            log.debug("JWT token invalid " + e);
+//            log.debug("JWT token invalid " + e);
+            System.out.println("JWT token invalid " + e);
         }
         return false;
     }
