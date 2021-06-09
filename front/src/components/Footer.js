@@ -11,7 +11,7 @@ export default function Footer() {
                 <a href = "https://github.com/MadalinCiobanu">
                     <img src={gh} alt="github logo" width="50px" height="50px" />
                 </a>
-                <a href = "https://www.facebook.com" >
+                <a href = "https://www.facebook.com/fifa" >
                     <img src={fb} alt="facebook logo" width="50px" height="50px" />
                 </a>
                 <a href="/message" >

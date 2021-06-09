@@ -1,7 +1,9 @@
 package com.codecool.league.controller;
 
 import com.codecool.league.model.AuthResponse;
+import com.codecool.league.model.User;
 import com.codecool.league.model.UserCredentials;
+import com.codecool.league.repository.UserRepository;
 import com.codecool.league.security.JwtServices;
 import lombok.AllArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,12 +25,17 @@ public class AuthController {
 
     private final AuthenticationManager authenticationManager;
     private final JwtServices jwtServices;
+    private final UserRepository userRepository;
 
     @PostMapping("/login")
     public AuthResponse login (@RequestBody UserCredentials userCredentials) {
 
         try {
             String email = userCredentials.getEmail();
+
+            User user = userRepository.findByEmail(email).orElseThrow(
+                    () -> new IllegalArgumentException("No User found with email: " + email)
+            );
 
             // authenticationManager.authenticate calls loadUserByUsername in CustomUserDetailsService
             Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
@@ -41,7 +48,7 @@ public class AuthController {
 
             String token = jwtServices.createToken(email, roles);
 
-            return new AuthResponse(email, roles, token);
+            return new AuthResponse(email, roles, token, user.getFirstName());
 
         } catch (AuthenticationException authException) {
             throw new BadCredentialsException("Invalid email or password");

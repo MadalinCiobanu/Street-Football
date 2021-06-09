@@ -43,9 +43,12 @@ export default function LoginFunctionality() {
             console.log(res.data);
 
             // Store user info and the token in localStorage
-            window.localStorage.setItem("userName", res.data.email);
+            window.localStorage.setItem("email", res.data.email);
             window.localStorage.setItem("token", res.data.token);
             window.localStorage.setItem("roles", res.data.roles);
+            window.localStorage.setItem("name", res.data.firstName);
+
+            window.location.reload();
         })
         .catch(() => {
             setErrors({ message: "Invalid email/password" });

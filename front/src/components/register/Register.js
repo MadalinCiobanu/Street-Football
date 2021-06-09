@@ -12,8 +12,9 @@ export default function Register() {
     lastName: "",
     email: "",
     phone: "",
+    roles: ["USER_ROLE"],
     password: "",
-    confirmPassword: "",
+    confirmPassword: ""
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -33,14 +34,15 @@ export default function Register() {
 
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
-        axios.post("http://localhost:8080/user/", values)
-        .then( res => {
-          if (res.status == 200) {
-            history.push("/login");
-          }
-        }, () => {
-          setErrors({email: "Email taken"})
-        });
+      axios.post("http://localhost:8080/user", values)
+      .then( res => {
+        if (res.status === 200) {
+          history.push("/login");
+        }
+      }, () => {
+        setErrors({email: "Email taken"});
+        setIsSubmitting(false);
+      });
     }
   }, [errors]);
 

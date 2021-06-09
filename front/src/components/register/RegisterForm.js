@@ -13,7 +13,7 @@ export default function RegisterForm() {
                     <div className="control">
                     <input className="input"
                     name="firstName"
-                    placeholder="Enter First Name"
+                    placeholder="First Name"
                     value={values.firstName}
                     onChange={handleChange}
                     />
@@ -26,7 +26,7 @@ export default function RegisterForm() {
                     <div className="control">
                     <input className="input"
                     name="lastName"
-                    placeholder="Enter Last Name"
+                    placeholder="Last Name"
                     value={values.lastName}
                     onChange={handleChange}
                     />
@@ -39,7 +39,7 @@ export default function RegisterForm() {
                     <div className="control">
                     <input className="input"
                     name="phone"
-                    placeholder="Enter a Phone Number"
+                    placeholder="Phone Number"
                     value={values.phone}
                     onChange={handleChange}
                     />
@@ -52,7 +52,7 @@ export default function RegisterForm() {
                     <div className="control">
                     <input className="input"
                     name="email"
-                    placeholder="Enter an email"
+                    placeholder="Email"
                     value={values.email}
                     onChange={handleChange}
                     />
@@ -66,7 +66,7 @@ export default function RegisterForm() {
                     <input className="input"
                     name="password"
                     type="password"
-                    placeholder="Enter password"
+                    placeholder="Password"
                     value={values.password}
                     onChange={handleChange}
                     />
@@ -80,7 +80,7 @@ export default function RegisterForm() {
                     <input className="input"
                     name="confirmPassword"
                     type="password"
-                    placeholder="Enter the password again"
+                    placeholder="Confirm Password"
                     value={values.confirmPassword}
                     onChange={handleChange}
                     />
