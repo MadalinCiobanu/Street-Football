@@ -4,6 +4,34 @@ import logo from '../ball.png';
 import './component.css';
 
 export default function Header() {
+
+    const notLogged = (
+        <React.Fragment>
+            <Link to="/login" className="navbar-item">
+                Login
+            </Link>
+            <Link to="/register" className="navbar-item">
+                Register
+            </Link>
+        </React.Fragment>
+    );
+
+    const logged = (
+        <React.Fragment>
+            <Link className="navbar-item"
+            onClick={() => {
+                window.localStorage.clear();
+                window.location.reload();
+            }}
+            >
+                Logout
+            </Link>
+            <Link to="/user" className="navbar-item">
+            {window.localStorage.getItem("name")}
+            </Link>
+        </React.Fragment>
+    )
+
     return (
         <div className="navbar">
             <div className="navbar-brand">
@@ -19,15 +47,13 @@ export default function Header() {
                     <Link to="/" className="navbar-item">
                         Home
                     </Link>
-                    <Link to="/login" className="navbar-item">
-                        Login
-                    </Link>
-                    <Link to="/register" className="navbar-item">
-                        Register
-                    </Link>
                     <Link to="/about" className="navbar-item">
                         About
                     </Link>
+                    {window.localStorage.getItem("email") !== null
+                    ? logged
+                    : notLogged
+                    }
                 </div>
             </div>
         </div>
