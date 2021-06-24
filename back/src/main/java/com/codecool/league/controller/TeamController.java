@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin("*")
 @RequestMapping("team")
 public class TeamController {
 
@@ -28,12 +29,12 @@ public class TeamController {
         return teamService.getTeams();
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Team addTeam (@RequestBody Team team) {
         return teamService.addTeam(team);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public Team editTeam (@RequestBody Team team) {
         return teamService.editTeam(team);
     }
