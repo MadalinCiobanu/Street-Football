@@ -19,7 +19,14 @@ public class Team {
     @NotNull @Size(min = 3, max = 20)
     private String name;
 
-    @OneToMany
+    @NotNull
+    private String teamAdminEmail;
+
+    @OneToOne
+    @JsonIgnoreProperties(value = {"team"})
+    private TeamImage teamImage;
+
+    @OneToMany(mappedBy = "team")
     @JsonIgnoreProperties(value = {"team"})
     private List<User> players;
 
