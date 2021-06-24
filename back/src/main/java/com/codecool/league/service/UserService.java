@@ -5,8 +5,6 @@ import com.codecool.league.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class UserService {
 
@@ -15,16 +13,6 @@ public class UserService {
     @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
-    }
-
-    public List<User> getUsers() {
-        return userRepository.findAll();
-    }
-
-    public User findById(long userId) {
-        return userRepository.findById(userId).orElseThrow(
-                () -> new IllegalArgumentException("No User found with id: " + userId)
-        );
     }
 
 
