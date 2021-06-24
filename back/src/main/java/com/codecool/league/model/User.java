@@ -1,6 +1,5 @@
 package com.codecool.league.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 import javax.persistence.*;
 import javax.validation.constraints.*;
@@ -36,7 +35,6 @@ public class User {
     private String password;
 
     @ManyToOne
-    @JsonIgnoreProperties(value = {"players"})
     private Team team;
 
     @ElementCollection(fetch = FetchType.EAGER)
