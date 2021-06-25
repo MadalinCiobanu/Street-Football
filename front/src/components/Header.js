@@ -1,9 +1,11 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import logo from '../ball.png';
 import './component.css';
 
 export default function Header() {
+
+    const history = useHistory();
 
     const notLogged = (
         <React.Fragment>
@@ -21,6 +23,7 @@ export default function Header() {
             <Link className="navbar-item"
             onClick={() => {
                 window.localStorage.clear();
+                history.push("/login");
                 window.location.reload();
             }}
             >
