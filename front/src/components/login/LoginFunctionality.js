@@ -34,13 +34,11 @@ export default function LoginFunctionality() {
         // Axios POST on the "/authenticate" endpoint of the api
         // The server checks if the credentials (email & password) are valid
         // And returns the JWT token, the user's name and ID
-        axios
-        .post("http://localhost:8080/auth/login", {
+        axios.post("http://localhost:8080/auth/login", {
             email: values.email,
             password: values.password,
         })
         .then((res) => {
-            console.log(res.data);
 
             // Store user info and the token in localStorage
             window.localStorage.setItem("email", res.data.email);
@@ -48,11 +46,11 @@ export default function LoginFunctionality() {
             window.localStorage.setItem("roles", res.data.roles);
             window.localStorage.setItem("name", res.data.firstName);
 
+            history.push("/user");
             window.location.reload();
         })
         .catch(() => {
             setErrors({ message: "Invalid email/password" });
-            setIsSubmitting(false);
         });
     }
     }, [isSubmitting]);
