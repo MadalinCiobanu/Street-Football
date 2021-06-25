@@ -48,8 +48,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/auth/login").permitAll()
 
                     .antMatchers(HttpMethod.POST, "/user").permitAll()
-                    .antMatchers(HttpMethod.GET, "/user/**").hasRole("ADMIN")
-                    .antMatchers(HttpMethod.PUT, "/user/**").hasRole("ADMIN")
+                    .antMatchers(HttpMethod.GET, "/user/**").authenticated()
+                    .antMatchers(HttpMethod.PUT, "/user/**").authenticated()
                     .antMatchers(HttpMethod.DELETE, "/user/**").hasRole("ADMIN")
 
                     .antMatchers(HttpMethod.GET, "/team").permitAll()
