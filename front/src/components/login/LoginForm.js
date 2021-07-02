@@ -33,9 +33,9 @@ export default function Login() {
                     />
                     </div>
                 </div>
-
-                {errors.message && <p>{errors.message}</p>}
-
+                <div className="login-error">
+                    {errors.message && <p>{errors.message}</p>}
+                </div>
                 <button className="button is-primary">Sign in</button>
             </form>
         </div>

@@ -50,7 +50,8 @@ export default function LoginFunctionality() {
             window.location.reload();
         })
         .catch(() => {
-            setErrors({ message: "Invalid email/password" });
+            setErrors({ message: "Invalid Email or Password" });
+            setIsSubmitting(false);
         });
     }
     }, [isSubmitting]);
