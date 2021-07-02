@@ -25,13 +25,13 @@ export default function RegValidation(values) {
       errors.phone = "The size must be 7-15 chars";
     }
 
-    if (!values.password) {
+    if (!values.password.trim()) {
         errors.password = "Password required";
     } else if (values.password.length < 5 || values.password.length > 20) {
       errors.password = "The size must be 5-20 chars";
     }
 
-    if (!(values.password === values.confirmPassword) || !values.confirmPassword) {
+    if (!(values.password === values.confirmPassword) || !values.confirmPassword.trim()) {
         errors.confirmPassword = "Incorrect password";
     } else if (values.confirmPassword.length < 5 || values.confirmPassword.length > 20) {
       errors.confirmPassword = "The size must be 5-20 chars";

@@ -11,80 +11,80 @@ export default function RegisterForm() {
                 <div className="field">
                     <label className="label">First Name</label>
                     <div className="control">
-                    <input className="input"
-                    name="firstName"
-                    placeholder="First Name"
-                    value={values.firstName}
-                    onChange={handleChange}
-                    />
-                    {errors.firstName && <p>{errors.firstName}</p>}
+                        <input className="input"
+                        name="firstName"
+                        placeholder="First Name"
+                        value={values.firstName}
+                        onChange={handleChange}
+                        />
+                        {errors.firstName && <p>{errors.firstName}</p>}
                     </div>
                 </div>
 
                 <div className="field">
                     <label className="label">Last Name</label>
                     <div className="control">
-                    <input className="input"
-                    name="lastName"
-                    placeholder="Last Name"
-                    value={values.lastName}
-                    onChange={handleChange}
-                    />
-                    {errors.lastName && <p>{errors.lastName}</p>}
+                        <input className="input"
+                        name="lastName"
+                        placeholder="Last Name"
+                        value={values.lastName}
+                        onChange={handleChange}
+                        />
+                        {errors.lastName && <p>{errors.lastName}</p>}
                     </div>
                 </div>
 
                 <div className="field">
                     <label className="label">Phone</label>
                     <div className="control">
-                    <input className="input"
-                    name="phone"
-                    placeholder="Phone Number"
-                    value={values.phone}
-                    onChange={handleChange}
-                    />
-                    {errors.phone && <p>{errors.phone}</p>}
+                        <input className="input"
+                        name="phone"
+                        placeholder="Phone Number"
+                        value={values.phone}
+                        onChange={handleChange}
+                        />
+                        {errors.phone && <p>{errors.phone}</p>}
                     </div>
                 </div>
 
                 <div className="field">
                     <label className="label">Email</label>
                     <div className="control">
-                    <input className="input"
-                    name="email"
-                    placeholder="Email"
-                    value={values.email}
-                    onChange={handleChange}
-                    />
-                    {errors.email && <p>{errors.email}</p>}
+                        <input className="input"
+                        name="email"
+                        placeholder="Email"
+                        value={values.email}
+                        onChange={handleChange}
+                        />
+                        {errors.email && <p>{errors.email}</p>}
                     </div>
                 </div>
 
                 <div className="field">
                     <label className="label">Password</label>
                     <div className="control">
-                    <input className="input"
-                    name="password"
-                    type="password"
-                    placeholder="Password"
-                    value={values.password}
-                    onChange={handleChange}
-                    />
-                    {errors.password && <p>{errors.password}</p>}
+                        <input className="input"
+                        name="password"
+                        type="password"
+                        placeholder="Password"
+                        value={values.password}
+                        onChange={handleChange}
+                        />
+                        {errors.password && <p>{errors.password}</p>}
                     </div>
                 </div>
 
                 <div className="field">
                     <label className="label">Confirm Password</label>
                     <div className="control">
-                    <input className="input"
-                    name="confirmPassword"
-                    type="password"
-                    placeholder="Confirm Password"
-                    value={values.confirmPassword}
-                    onChange={handleChange}
-                    />
-                    {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+                        <input className="input"
+                        name="confirmPassword"
+                        type="password"
+                        placeholder="Confirm Password"
+                        value={values.confirmPassword}
+                        onChange={handleChange}
+                        />
+                        {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
                     </div>
                 </div>
 
