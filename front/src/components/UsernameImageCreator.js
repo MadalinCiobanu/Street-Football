@@ -1,12 +1,12 @@
 import React from 'react'
 
-export default function UsernameImageCreator(name) {
+export default function UsernameImageCreator(name, size) {
     
     return (
         <div>
             <img
                 src={
-                    createImageFromInitials(250, name, getRandomColor())
+                    createImageFromInitials(size, name, getRandomColor())
                 }
                 alt='profile-picture'
             />
