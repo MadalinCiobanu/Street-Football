@@ -5,16 +5,26 @@ export default function Home() {
 
     const history = useHistory();
 
+    const notLogged = <div>
+        <p className="title">Join our community</p>
+        <button className="button is-light is-medium"
+        onClick={() => history.push("/register")}>
+            Register Now
+        </button>
+    </div>
+
+    const logged = <div>
+        <p className="title">Welcome to Street Football</p>
+        <button className="button is-light is-medium"
+        onClick={() => history.push("/team-search")}>
+            Search a Team
+        </button>
+    </div>
+
     return (
         <div>
             <div className="bg">
-                <div>
-                    <p className="title">Join our community</p>
-                    <button className="button is-light is-medium"
-                    onClick={() => history.push("/register")}>
-                        Register Now
-                    </button>
-                </div>
+                {localStorage.getItem("email") ? logged : notLogged}
             </div>
             <div className="card-container">
                 <Link to="/team" className="card card1">
