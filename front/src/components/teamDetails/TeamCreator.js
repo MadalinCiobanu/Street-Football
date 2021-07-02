@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import AddTeam from './AddTeam';
 
-export default function TeamDetails() {
+export default function TeamCreator() {
 
     const email = localStorage.getItem("email");
 
@@ -26,10 +26,14 @@ export default function TeamDetails() {
         })
     }, []);
 
-    const { team, handleChange, handleSubmit, errors } = AddTeam();
+    const { team, handleChange, handleSubmit, errors, uploadImage } = AddTeam();
 
     const unavailable = <div className="team-container">
             <h1 className="box-text">You already have a team!</h1>
+        </div>
+
+    const notLogged = <div className="team-container">
+            <h1 className="box-text">You are not logged!</h1>
         </div>
 
     const form = <div className="team-container">
@@ -42,6 +46,9 @@ export default function TeamDetails() {
                 onChange={handleChange}
                 value={team.name}/>
                 {errors.name && <p>{errors.name}</p>}
+                <div>
+                    <input type="file" onChange={uploadImage}/>
+                </div>
                 <button className="button is-medium margin-top" type="submit">Submit</button>
             </form>
         </div>
@@ -59,7 +66,7 @@ export default function TeamDetails() {
                         </div>
                     </div>
                 </div>
-                {values.team == null ? form : unavailable}
+                {email ? values.team === null ? form : unavailable : notLogged}
             </div>           
         </div>
     )
