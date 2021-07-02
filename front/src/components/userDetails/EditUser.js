@@ -15,7 +15,7 @@ export default function EditUser() {
 
     const passwordForm = <div>
         <h1 className="small-title">Change Password</h1>
-        <form className="small-margin-top" onSubmit={handleSubmitPassword}>
+        <form className="small-margin-top control" onSubmit={handleSubmitPassword}>
             <input className="input small-margin-top" name="old"
             onChange={handlePassword}
             type="password"
@@ -37,19 +37,22 @@ export default function EditUser() {
 
     const detailsForm = <div>
     <h1 className="small-title">Edit Details</h1>
-    <form className="small-margin-top" onSubmit={handleSubmitDetails}>
+    <form className="small-margin-top control" onSubmit={handleSubmitDetails}>
         <input className="input small-margin-top" name="firstName"
         onChange={handleDetails}
-        value={values.firstName}/>
-        {errors.old && <p>{errors.old}</p>}
+        value={values.firstName}
+        placeholder="First Name"/>
+        {detailsErrors.firstName && <p>{detailsErrors.firstName}</p>}
         <input className="input small-margin-top" name="lastName"
         onChange={handleDetails}
-        value={values.lastName}/>
-        {errors.password  && <p>{errors.password}</p>}
+        value={values.lastName}
+        placeholder="Last Name"/>
+        {detailsErrors.lastName  && <p>{detailsErrors.lastName}</p>}
         <input className="input small-margin-top" name="phone"
         onChange={handleDetails}
-        value={values.phone}/>
-        {errors.confirmPassword  && <p>{errors.confirmPassword}</p>}
+        value={values.phone}
+        placeholder="Phone"/>
+        {detailsErrors.phone  && <p>{detailsErrors.phone}</p>}
         <button className="button is-medium small-margin-top" type="submit">Submit</button>
     </form>
     </div>
@@ -57,7 +60,7 @@ export default function EditUser() {
     return (
         <div className="form-container">
             <div className="user-details">
-                <div>
+                <div className="full-width">
                     <div>
                     <a onClick={() => setDetails(false)}>Change Password</a> &nbsp; / &nbsp; <a onClick={() => setDetails(true)}>Edit Details</a>
                     </div>
