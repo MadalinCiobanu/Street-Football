@@ -20,7 +20,7 @@ export default function Header() {
 
     const logged = (
         <React.Fragment>
-            <Link className="navbar-item"
+            <Link to="#" className="navbar-item"
             onClick={() => {
                 window.localStorage.clear();
                 history.push("/login");
