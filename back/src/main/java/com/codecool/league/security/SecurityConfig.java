@@ -62,6 +62,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers(HttpMethod.PUT, "/tournament").hasRole("ADMIN")
                     .antMatchers(HttpMethod.POST, "/tournament").hasRole("ADMIN")
                     .antMatchers(HttpMethod.DELETE, "/tournament").hasRole("ADMIN")
+
+                    .antMatchers(HttpMethod.GET, "/application/**").authenticated()
+                    .antMatchers(HttpMethod.PUT, "/application/**").authenticated()
+                    .antMatchers(HttpMethod.POST, "/application/**").authenticated()
+                    .antMatchers(HttpMethod.DELETE, "/application/**").authenticated()
+                
                 .and()
                 .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class);
     }
