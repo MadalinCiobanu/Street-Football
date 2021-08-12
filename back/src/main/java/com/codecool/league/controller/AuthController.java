@@ -48,7 +48,7 @@ public class AuthController {
 
             String token = jwtServices.createToken(email, roles);
 
-            return new AuthResponse(email, roles, token, user.getFirstName());
+            return new AuthResponse(user.getId(), email, roles, token, user.getFirstName(), user.getLastName(), user.getPhone(), user.getTeam());
 
         } catch (AuthenticationException authException) {
             throw new BadCredentialsException("Invalid email or password");
