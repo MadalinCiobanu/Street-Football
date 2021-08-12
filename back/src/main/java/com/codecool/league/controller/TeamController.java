@@ -24,7 +24,7 @@ public class TeamController {
         return teamService.getTeam(id);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Team> getTeams() {
         return teamService.getTeams();
     }
