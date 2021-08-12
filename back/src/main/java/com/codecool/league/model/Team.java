@@ -22,6 +22,10 @@ public class Team {
     @NotNull
     private String teamAdminEmail;
 
+    @OneToMany(mappedBy = "team")
+    @JsonIgnoreProperties(value = {"team"})
+    private List<TeamApplication> teamApplications;
+
     @OneToOne
     @JsonIgnoreProperties(value = {"team"})
     private TeamImage teamImage;
