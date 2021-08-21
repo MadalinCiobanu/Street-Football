@@ -34,7 +34,7 @@ public class User {
     @NotNull @Size(min = 5)
     private String password;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     private Team team;
 
     @ElementCollection(fetch = FetchType.EAGER)
