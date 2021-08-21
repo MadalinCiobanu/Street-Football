@@ -40,11 +40,18 @@ export default function LoginFunctionality() {
         })
         .then((res) => {
 
+            console.log(res.data)
+
             // Store user info and the token in localStorage
+            window.localStorage.setItem("id", res.data.id);
             window.localStorage.setItem("email", res.data.email);
             window.localStorage.setItem("token", res.data.token);
             window.localStorage.setItem("roles", res.data.roles);
             window.localStorage.setItem("name", res.data.firstName);
+            window.localStorage.setItem("lastName", res.data.lastName);
+            window.localStorage.setItem("phone", res.data.phone);
+            res.data.team && window.localStorage.setItem("team", res.data.team.name);
+            res.data.team && window.localStorage.setItem("teamId", res.data.team.id);
 
             history.push("/user");
             window.location.reload();
