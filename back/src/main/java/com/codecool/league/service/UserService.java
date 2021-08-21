@@ -22,6 +22,12 @@ public class UserService {
         );
     }
 
+    public User getUser(long id) {
+        return userRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("No User found with id: " + id)
+        );
+    }
+
 
     public User addUser(User user) {
         return userRepository.save(user);
