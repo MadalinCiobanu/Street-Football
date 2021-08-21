@@ -22,7 +22,7 @@ public class Team {
     @NotNull
     private String teamAdminEmail;
 
-    @OneToMany(mappedBy = "team")
+    @OneToMany(mappedBy = "team", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnoreProperties(value = {"team"})
     private List<TeamApplication> teamApplications;
 
