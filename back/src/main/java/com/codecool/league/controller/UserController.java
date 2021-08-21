@@ -25,6 +25,11 @@ public class UserController {
         return userService.findByEmail(email);
     }
 
+    @GetMapping("/id/{id}")
+    public User getUser(@PathVariable("id") long id) {
+        return userService.getUser(id);
+    }
+
     @PutMapping("/{email}")
     public void changePassword (@RequestBody Password password, @PathVariable("email") String email) {
         User user = userService.findByEmail(email);
@@ -45,6 +50,17 @@ public class UserController {
     @PutMapping
     public User editUser (@RequestBody @Valid User user) {
         return userService.editUser(user);
+    }
+
+    @PutMapping("/details")
+    public User editUserDetails (@RequestBody @Valid User user) {
+        User newUser = userService.getUser(user.getId());
+
+        newUser.setFirstName(user.getFirstName());
+        newUser.setLastName(user.getLastName());
+        newUser.setPhone(user.getPhone());
+
+        return userService.editUser(newUser);
     }
 
     @DeleteMapping("/{id}")
