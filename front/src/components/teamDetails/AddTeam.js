@@ -10,9 +10,10 @@ export default function AddTeam() {
 
     const [ user, setUser ] = useState({});
 
-    // const [ image, setImage ] = useState({
-    //     file: null
-    // });
+    const [ image, setImage ] = useState({
+        file: null,
+        id: ""
+    });
 
     useEffect(() => {
         axios.get(`http://localhost:8080/user/${email}`, {
@@ -28,8 +29,7 @@ export default function AddTeam() {
 
     const [team, setTeam] = useState({
         name: "",
-        teamAdminEmail: "",
-        players: []
+        teamAdminEmail: ""
     });
 
     const [errors, setErrors] = useState({});
@@ -43,11 +43,11 @@ export default function AddTeam() {
         });
     };
 
-    // const uploadImage = (e) => {
-    //     setImage({
-    //         file : e.target.files[0]
-    //     })
-    // }
+    const uploadImage = (e) => {
+        setImage({
+            file : e.target.files[0]
+        })
+    }
 
     const validate = (team) => {
 
@@ -63,7 +63,6 @@ export default function AddTeam() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // setErrors(validate(values));
         setErrors(validate(team));
         setIsSubmitted(true);
     };
@@ -72,19 +71,35 @@ export default function AddTeam() {
         team.teamAdminEmail = user.email;
         console.log(team);
         if (Object.keys(errors).length === 0 && isSubmitted) {
-            console.log(user.id);
-            // team.players[0].id = user.id;
-            console.log(team);
-            axios.post(`http://localhost:8080/team`, team, {
+
+            // add image
+
+            const formData = new FormData();
+            formData.append("image", image.file, team.name)
+
+            console.log(image.file);
+
+            axios.post(`http://localhost:8080/team/image`, formData, {
                 headers: {
-                Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-                }
-            })
-            .then( res => {
+                        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+                    }
+            }).then( res => {
                 if (res.status === 200) {
-                    console.log(res);
-                    user.team = res.data;
+
+                    // add team
+                    
+                    const fullTeam = {
+                        name: team.name,
+                        teamAdminEmail: team.teamAdminEmail,
+                        players: team.players,
+                        teamImage: res.data
+                    }
+
+                    console.log(fullTeam);
+
+                    user.team = fullTeam;
                     console.log(user);
+
                     axios.put(`http://localhost:8080/user`, user, {
                         headers: {
                         Authorization: `Bearer ${window.localStorage.getItem("token")}`,
@@ -92,19 +107,37 @@ export default function AddTeam() {
                     })
                     .then( res => {
                         if (res.status === 200) {
-                        history.push("/team");
-                        console.log("ok")
+                            console.log(res.data);
+                            window.localStorage.setItem("team", res.data.team.name);
+                            window.localStorage.setItem("teamId", res.data.team.id);
+
+                            // add team id in team image
+
+                            const fullImage = {
+                                id: res.data.team.teamImage.id,
+                                data: res.data.team.teamImage.data,
+                                team: {
+                                    id: res.data.team.id
+                                }
+                            }
+
+                            axios.put(`http://localhost:8080/team/image`, fullImage, {
+                                headers: {
+                                        Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+                                    }
+                            })
+                            .then( res => {
+                                console.log(res.data);
+
+                                history.push("/team");
+                                window.location.reload();
+                            })
                         }
                     });
-                    // axios.get(`http://localhost:8080/team/${res.data.id}`, {
-                    //     headers: {
-                    //     Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-                    //     }
-                    // }).then(res => console.log(res))
-                }
-            });
-        }
-    }, [errors])
 
-    return { team, handleChange, handleSubmit, errors };
+                }
+            })
+    }}, [errors]);
+
+    return { team, handleChange, handleSubmit, errors, uploadImage };
 }
