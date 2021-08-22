@@ -1,38 +1,39 @@
 import React from 'react'
 import UsernameImageCreator from '../UsernameImageCreator'
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 export default function UserDetails() {
 
-    const email = localStorage.getItem("email");
+    // const email = localStorage.getItem("email");
 
     const history = useHistory();
 
-    const [values, setValues] = useState({
-        firstName: "",
-        lastName: "",
-        roles: [],
-        team: {
-            name: ""
-        }
-    });
+    // const [values, setValues] = useState({
+    //     firstName: "",
+    //     lastName: "",
+    //     roles: [],
+    //     team: {
+    //         name: ""
+    //     }
+    // });
 
-    const [name, setName] = useState("");
+    // const [name, setName] = useState("");
+    const name = window.localStorage.name + " " + window.localStorage.lastName;
 
-    useEffect(() => {
-        axios.get(`http://localhost:8080/user/${email}`, {
-            headers: {
-                Authorization: `Bearer ${window.localStorage.getItem("token")}`,
-            }
-            })
-        .then(res => {
-            console.log(res.data);
-            setValues(res.data);
-            setName(res.data.firstName + " " + res.data.lastName)
-        })
-    }, []);
+    // useEffect(() => {
+    //     axios.get(`http://localhost:8080/user/${email}`, {
+    //         headers: {
+    //             Authorization: `Bearer ${window.localStorage.getItem("token")}`,
+    //         }
+    //         })
+    //     .then(res => {
+    //         console.log(res.data);
+    //         setValues(res.data);
+    //         setName(res.data.firstName + " " + res.data.lastName)
+    //     })
+    // }, []);
 
     return (
         <div className="form-container">
@@ -55,12 +56,12 @@ export default function UserDetails() {
                 <div className="right-part">
                     <h1 className="box-text">User Details</h1>
                     <div className="user-details-values">
-                        <p>First Name: <span>{values.firstName}</span></p>
-                        <p>Last Name: <span>{values.lastName}</span></p>
-                        <p>Email: <span>{values.email}</span></p>
-                        <p>Phone: <span>{values.phone}</span></p>
-                        <p>Team: <span>{values.team === null ? "None": values.team.name}</span></p>
-                        <p>Role: <span>{values.roles[0] === "USER_ROLE" ? "Member" : "Admin"}</span></p>
+                        <p>First Name: <span>{window.localStorage.getItem("name")}</span></p>
+                        <p>Last Name: <span>{window.localStorage.getItem("lastName")}</span></p>
+                        <p>Email: <span>{window.localStorage.getItem("email")}</span></p>
+                        <p>Phone: <span>{window.localStorage.getItem("phone")}</span></p>
+                        <p>Team: <span>{window.localStorage.getItem("team") === null ? "None": window.localStorage.getItem("team")}</span></p>
+                        <p>Role: <span>{window.localStorage.getItem("roles") === "USER_ROLE" ? "Member" : "Admin"}</span></p>
                     </div>
                 </div>
             </div>
