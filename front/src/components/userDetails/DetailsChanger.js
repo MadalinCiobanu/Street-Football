@@ -71,21 +71,21 @@ export default function DetailsChanger() {
     useEffect(() => {
         console.log(detailsErrors);
         if (Object.keys(detailsErrors).length === 0 && isSubmitted) {
-            if (values.team) {
-                values.team = {
-                    id: values.team.id
-                }
-            }
+            values.team ? values.team.players = [] : values.team = {};
             console.log(values);
-            axios.put(`http://localhost:8080/user`, values, {
+            axios.put(`http://localhost:8080/user/details`, values, {
                 headers: {
                 Authorization: `Bearer ${window.localStorage.getItem("token")}`,
                 }
             })
             .then( res => {
                 if (res.status === 200) {
+                    window.localStorage.setItem("name", res.data.firstName);
+                    window.localStorage.setItem("lastName", res.data.lastName);
+                    window.localStorage.setItem("phone", res.data.phone);
                     console.log("ok");
                     history.push("/user");
+                    window.location.reload();
                 }
             });
         }
