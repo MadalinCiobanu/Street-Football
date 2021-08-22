@@ -17,7 +17,7 @@ export default function Home() {
         <p className="title">Welcome to Street Football</p>
         <button className="button is-light is-medium"
         onClick={() => history.push("/team-search")}>
-            Search a Team
+            Find a Team
         </button>
     </div>
 
