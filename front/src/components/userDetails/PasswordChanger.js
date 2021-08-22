@@ -74,5 +74,5 @@ export default function PasswordChanger() {
         }
     }, [errors])
 
-    return { password, handlePassword, handleSubmitPassword, errors };
+    return {handlePassword, handleSubmitPassword, errors };
 }
