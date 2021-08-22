@@ -5,11 +5,9 @@ import DetailsChanger from './DetailsChanger';
 
 export default function EditUser() {
 
-    const { password, handlePassword, handleSubmitPassword, errors } = PasswordChanger();
+    const {handlePassword, handleSubmitPassword, errors } = PasswordChanger();
 
     const { values, handleDetails, handleSubmitDetails, detailsErrors } = DetailsChanger();
-
-    const email = localStorage.getItem("email");
 
     const [details, setDetails] = useState(false);
 
