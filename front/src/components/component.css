@@ -281,3 +281,43 @@
 .is-centred {
   justify-content: center;
 }
+
+/* pagination */
+
+.pagination {
+  position: absolute;
+  bottom: 25px;
+  left: 4px;
+  width: 100%;
+  background-color: #eeeeee;
+  color: #393e46;
+  justify-content: center;
+}
+
+.page-numbers {
+  list-style: none;
+  display: flex;
+}
+
+.page-numbers li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.page-numbers li.active {
+  background-color: #393e46;
+  color: #00adb5;
+}
+
+.page-numbers li button {
+  background-color: transparent;
+  border: none;
+  color: #393e46;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.page-numbers li button:hover {
+  background-color: #393e46;
+  color: #00adb5;
+}
