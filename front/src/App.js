@@ -7,6 +7,14 @@ import Register from './components/register/RegisterForm';
 import Login from './components/login/LoginForm';
 import About from './components/About';
 import ComingSoon from './components/ComingSoon';
+import UserDetails from './components/userDetails/UserDetails';
+import EditUser from './components/userDetails/EditUser';
+import TeamDetails from './components/teamDetails/TeamDetails';
+import TeamCreator from './components/teamDetails/TeamCreator';
+import TeamSearch from './components/teamDetails/TeamSearch';
+import ApplicationForm from './components/teamApplication/ApplicationForm';
+import TeamApplications from './components/teamDetails/applications/TeamApplications';
+import AcceptUser from './components/teamDetails/applications/AcceptUser';
 
 
 function App() {
@@ -18,7 +26,14 @@ function App() {
         <Route path="/register" component={Register}/>
         <Route path="/login" component={Login}/>
         <Route path="/about" component={About}/>
-        <Route path="/team" component={ComingSoon}/>
+        <Route path="/user" component={UserDetails}/>
+        <Route path="/user-edit" component={EditUser}/>
+        <Route path="/team" component={TeamDetails}/>
+        <Route path="/create-team" component={TeamCreator}/>
+        <Route path="/application/:id" component={ApplicationForm}/>
+        <Route path="/applications" component={TeamApplications}/>
+        <Route path="/accept/:id" component={AcceptUser}/>
+        <Route path="/team-search" component={TeamSearch}/>
         <Route path="/tournament" component={ComingSoon}/>
         <Route path="/referee" component={ComingSoon}/>
         <Footer />
